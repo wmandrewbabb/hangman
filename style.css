@@ -1,0 +1,153 @@
+/* welcome to the style page */
+
+/* THE GOOGLE FONTS:
+font-family: 'Bungee Inline', cursive;
+font-family: 'Hanalei Fill', cursive;
+font-family: 'PT Mono', monospace;
+font-family: 'Abril Fatface', cursive; 
+font-family: 'Oswald', sans-serif;
+*/
+
+body {
+   
+    /*background: cadetblue; /* fallback for old browsers */
+    /*background: -webkit-linear-gradient(to top, #f1f2b5, #135058); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #f1f2b5, #135058); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: lightblue url("trextiny.png") no-repeat fixed center; 
+    background-size: cover; 
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    color: #fff;
+    height: 100vh;
+    text-align: center;
+    font-size: 18px;
+}
+
+
+.wrappper {
+    width: 100%;
+    margin: 0 auto;  
+}
+
+
+h1, h2, h3 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    text-transform: uppercase;
+    margin: 5px 0;
+    text-shadow: 2px 2px darkslategray;
+
+}
+
+h1 {
+    font-size: 48px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700; 
+
+
+}
+
+h2 {
+    font-size: 24px;
+    line-height: 12px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+
+}
+
+p {
+    font-size: 12px;
+}
+
+#alphabet {
+    margin: 25px auto;
+    padding: 0;
+    max-width: 760px;
+}
+
+#alphabet:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+#alphabet li {
+    float: left;
+    margin: 0 8px 10px 0;
+    list-style: none;
+    width: 45px;
+    height: 35px;
+    padding-top: 15px;
+    background: #fff;
+    color: cadetblue;
+    border-radius: 25px;
+    border: solid 1px #fff;
+    text-transform: capitalize;
+    box-shadow: 2px 2px darkslategray;
+}
+
+#alphabet li:hover {
+    background: darkslategray;
+    border: solid 1px #fff;
+    color: #fff;
+}
+
+#theWord {
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+#theWord li {
+    position: relative;
+    list-style: none;
+    margin: 0;
+    margin-top: 20px;
+    display: inline-block;
+    padding: 0 10px;
+    font-family: 'Cousine', monospace;
+    font-weight: 700;
+    font-size: 48px;
+    text-shadow: 2px 2px darkslategray;
+    text-transform: capitalize;
+}
+
+.active {
+    opacity: 0.4;
+    filter: alpha(opacity=40);
+}
+
+.active:hover {
+    opacity: 0.2;
+    filter: alpha(opacity=40);
+}
+
+#playerGuessesLeft {
+    font-size: 24px;
+    text-align: center;
+    display: block;
+}
+
+button {
+    border-radius: 45px;
+    background: darkslategray;
+    color: #fff;
+    border: solid 1px #fff;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 18px 10px;
+    width: 180px;
+    margin: 10px;
+    outline: none;
+    box-shadow: 2px 2px darkslategray;
+}
+
+button:hover {
+    background: #fff;
+    border: solid 1px #fff;
+    color: darkslategray;
+}
+
+.buttons {
+    margin: auto;
+    align-content: center;
+}
