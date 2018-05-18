@@ -16,7 +16,6 @@ window.onload = function () {
         ];
     
     var word;                      // Selected word
-    var guess;                     // Guess
     var storedLetters = [ ];       // Stored Letters
     var guessesLeft;               // Guesses Left
     var counter;                   // Count Stored Letters
@@ -29,15 +28,15 @@ window.onload = function () {
     var buttons = function () {
         myButtons = document.getElementById("buttons");
         letters = document.createElement("ul");
-    
-        for (var x = 0; x < alphabet.length; x++) {
-            letters.id = "alphabet";
-            list = document.createElement("li");
-            list.id = "letter";
-            list.innerHTML = alphabet[x];
-            clickInput();
-            myButtons.appendChild(letters);
-            letters.appendChild(list);
+        letters.id = "alphabet";
+        myButtons.appendChild(letters);
+        
+        for (var x = 0; x < alphabet.length; x++) {    
+            var letterBtn = document.createElement("li");
+            letterBtn.id = "letter";
+            letterBtn.innerHTML = alphabet[x];
+            letterBtn.onclick = clickInput;    
+            letters.appendChild(letterBtn);
         }
     }
     
@@ -46,22 +45,17 @@ window.onload = function () {
     // Create the chosen letters unordered list
 
     cycleWord = function () {
-        wordHolder = document.getElementById("hold");
-        correct = document.createElement("ul");
-    
+        var wordHolder = document.getElementById("hold");
+        var correct = document.createElement("ul");
+        correct.setAttribute("id", "theWord");
+        wordHolder.appendChild(correct);
+        
         for (var x = 0; x < word.length; x++) {
-            
-            correct.setAttribute("id", "theWord");
-            
-            guess = document.createElement("li");
-            
+            var guess = document.createElement("li");
             guess.setAttribute("class", "guess");
-            
             guess.innerHTML = "_";
             
-    
             storedLetters.push(guess);
-            wordHolder.appendChild(correct);
             correct.appendChild(guess);
         }
     }
@@ -92,28 +86,21 @@ window.onload = function () {
 
     // OnClick Function
     clickInput = function () {
-        list.onclick = function () {
-            var chosenLetter = (this.innerHTML);
-            this.setAttribute("class", "active");
-            this.onclick = null;
-            
-            for (var x = 0; x < word.length; x++) {
-                if (word[x] === chosenLetter) {
-                    storedLetters[x].innerHTML = chosenLetter;
-                    counter += 1;
-                } 
-            }
-            
-            var i = (word.indexOf(chosenLetter));
-            
-            if (i === -1) {
-                guessesLeft -= 1;
-                textUpdate();
+        var chosenLetter = (this.innerHTML);
+        this.setAttribute("class", "active");
+        this.onclick = null;
+
+        for (var x = 0; x < word.length; x++) {
+            if (word[x] === chosenLetter) {
+                storedLetters[x].innerHTML = chosenLetter;
+                counter += 1;
             } 
-            else {
-                textUpdate();
-            }
         }
+
+        if (word.indexOf(chosenLetter) === -1) {
+            guessesLeft -= 1;
+        } 
+        textUpdate();
     }
     
     
