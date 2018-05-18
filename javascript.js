@@ -153,7 +153,7 @@ window.onload = function () {
 
     }
 
-    //this is where our modal lives - this was way more simple than I expected it was going to be
+    //this is where our modal lives - this was way more simple than I expected it was going to
 
     var modal = document.getElementById('myModal');
 
