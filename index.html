@@ -3,46 +3,46 @@
 
     <head>
         <meta charset="UTF-8">
-        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">-->
         <link rel="stylesheet" type="text/css" href="style.css">
-        <!-- We link our html to the Bootstrap CDN -->
         <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Bungee+Inline|Hanalei+Fill|PT+Mono|Oswald:200,300,700|Cousine:700" rel="stylesheet">
-        
-        
         <title> The Dinosaur Word Guess Game</title>
-
     </head>
 
     <body>
         <div class="container">
             <div class="wrapper">
-                <br>
-                <h1>Jurassic Word Guess</h1>
-                <h2>Dinosaur Word Guess Game</h2>
-                <p>Use the alphabet below to guess the dinosaur! </p>
+                <div id="toptitle">
+                    <br>
+                    <h1>Jurassic Word Guess</h1>
+                    <h2>Dinosaur Word Guess Game</h2>
+                    <br>
+                    <br>
+                </div>
             </div>
                 
             <div class="wrapper">  
                 <div id="hold"></div>
                     <p id="playerGuessesLeft"></p>
                         <div id="buttons"></div>
-                        <div class="container">
-                            <button id="resetButton">Start Over</button>
-                        </div>
+                        <button id="resetButton">Start Over</button>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+            <div class="modalContent">
+                <span class="modalClose">&times;</span>
+                <div id="modalText">YOU WIN</div>
+                <h2>CLICK ANYWHERE TO CONTINUE</h2>
+                <p id="modalTinyText"><a href="https://www.newdinosaurs.com/" target="_blank" id-"modalTinyText">(Click here if you want to read more about dinosaurs!)</a></p>
+            </div>
+        </div>
+
     </body>
 
     <script src ="javascript.js"></script>
-
-    <!-- jQuery, javascript file for the Bootstrap's javascript file to function -->
-    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
-
-    <!-- Bootstrap's javascript file that allows the dropdown menu to work  -->
-    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>-->
-
 
 </html>
 

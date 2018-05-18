@@ -12,7 +12,18 @@ window.onload = function () {
             "deinonychus",
             "baryonyx",
             "spinosaurus",
-            "ankylosaurus"
+            "ankylosaurus",
+            "eoraptor",
+            "maiasaur",
+            "protoceratops",
+            "iguanodon",
+            "carnotaurus",
+            "archaeopteryx",
+            "troodon",
+            "oviraptor",
+            "coelophysis",
+            "allosaurus",
+            "brachiosaurus"
         ];
     
     var word;                      // Selected word
@@ -20,6 +31,8 @@ window.onload = function () {
     var storedLetters = [ ];       // Stored Letters
     var guessesLeft;               // Guesses Left
     var counter;                   // Count Stored Letters
+    var answer;                    // For the proper display of the hidden word     
+    var wordHolder;                // For the proper display of the hidden word
 
     // smack playerGuessesLeft
     var showGuessesLeft = document.getElementById("playerGuessesLeft");      
@@ -32,12 +45,32 @@ window.onload = function () {
     
         for (var x = 0; x < alphabet.length; x++) {
             letters.id = "alphabet";
-            list = document.createElement("li");
-            list.id = "letter";
-            list.innerHTML = alphabet[x];
-            clickInput();
+            buttonList = document.createElement("li");
+            buttonList.id = "letter";
+            buttonList.innerHTML = alphabet[x];
+            buttonList.onclick = function () {
+
+                var chosenLetter = (this.innerHTML);
+                this.setAttribute("class", "active");
+                this.onclick = null;
+                
+                for (var x = 0; x < word.length; x++) {
+                    if (word[x] === chosenLetter) {
+                        storedLetters[x].innerHTML = chosenLetter;
+                        counter += 1;
+                    } 
+                }
+                                
+                if (word.indexOf(chosenLetter) === -1) {
+                    guessesLeft -= 1;
+                } 
+                    
+                textUpdate();
+                
+
+            }
             myButtons.appendChild(letters);
-            letters.appendChild(list);
+            letters.appendChild(buttonList);
         }
     }
     
@@ -47,11 +80,11 @@ window.onload = function () {
 
     cycleWord = function () {
         wordHolder = document.getElementById("hold");
-        correct = document.createElement("ul");
+        answer = document.createElement("ul");
     
         for (var x = 0; x < word.length; x++) {
             
-            correct.setAttribute("id", "theWord");
+            answer.setAttribute("id", "theWord");
             
             guess = document.createElement("li");
             
@@ -59,10 +92,10 @@ window.onload = function () {
             
             guess.innerHTML = "_";
             
-    
             storedLetters.push(guess);
-            wordHolder.appendChild(correct);
-            correct.appendChild(guess);
+            wordHolder.appendChild(answer);
+            answer.appendChild(guess);
+
         }
     }
     
@@ -81,41 +114,12 @@ window.onload = function () {
                     showGuessesLeft.innerHTML = "Better Luck Next Time!";
                 }
                 else {
-                    showGuessesLeft.innerHTML = "You Win!";
+                    showGuessesLeft.innerHTML = "Nice going!";
+                    modal.style.display = "block";
                 }
             }
-
-            console.log("this is counter variable: " + counter);
         }
     }
-
-
-    // OnClick Function
-    clickInput = function () {
-        list.onclick = function () {
-            var chosenLetter = (this.innerHTML);
-            this.setAttribute("class", "active");
-            this.onclick = null;
-            
-            for (var x = 0; x < word.length; x++) {
-                if (word[x] === chosenLetter) {
-                    storedLetters[x].innerHTML = chosenLetter;
-                    counter += 1;
-                } 
-            }
-            
-            var i = (word.indexOf(chosenLetter));
-            
-            if (i === -1) {
-                guessesLeft -= 1;
-                textUpdate();
-            } 
-            else {
-                textUpdate();
-            }
-        }
-    }
-    
     
     // Play
 
@@ -129,7 +133,7 @@ window.onload = function () {
         buttons(); //oh god work
     
         storedLetters = [ ];
-        guessesLeft = 6;
+        guessesLeft = 7;
         counter = 0;
         cycleWord();
         textUpdate();
@@ -143,9 +147,28 @@ window.onload = function () {
 
     document.getElementById("resetButton").onclick = function() {
         
-        correct.parentNode.removeChild(correct);
+        answer.parentNode.removeChild(answer);
         letters.parentNode.removeChild(letters);
         play();
 
     }
+
+    //this is where our modal lives - this was way more simple than I expected it was going to be
+
+    var modal = document.getElementById('myModal');
+
+    var span = document.getElementsByClassName("modalClose")[0];
+
+
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
 }
+
