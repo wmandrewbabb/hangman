@@ -33,6 +33,9 @@ window.onload = function () {
     var counter;                   // Count Stored Letters
     var answer;                    // For the proper display of the hidden word     
     var wordHolder;                // For the proper display of the hidden word
+    var wins = 0;
+    var games = 0;
+    var gameCondition = "start";
 
     // smack playerGuessesLeft
     var showGuessesLeft = document.getElementById("playerGuessesLeft");      
@@ -104,6 +107,7 @@ window.onload = function () {
     textUpdate = function () {
         var modalMessage = document.getElementById("modalText");
         showGuessesLeft.innerHTML = "You have " + guessesLeft + " guesses left.";
+        var winLossCount = document.getElementById("modalWinLoss");
         
         if (guessesLeft < 1) {
                 showGuessesLeft.innerHTML = "You lost! Keep going to discover the word.";
@@ -113,15 +117,33 @@ window.onload = function () {
             if (counter === storedLetters.length) {
                 if (guessesLeft < 1){
                     showGuessesLeft.innerHTML = "Better Luck Next Time!";
+                    console.log("This is the loss loop games" + games);
                     modalMessage.innerHTML = "YOU LOST!";
                     modal.style.display = "block";
+                    if (gameCondition === "started") {
+                        games++;
+                        gameCondition = "finished"
+                    }
+
                 }
+
                 else {
                     modalMessage.innerHTML = "YOU WIN!";
+                    console.log("This is the win count" +wins );
+                    console.log("This is the win loop games" + games);
                     showGuessesLeft.innerHTML = "Nice going!";
                     modal.style.display = "block";
+                    if (gameCondition === "started") {
+                        wins++;
+                        games++;
+                        gameCondition = "finished"
+                    }
                 }
+                
             }
+
+            winLossCount.innerHTML = "You have won " + wins + " out of " + games + " games.";
+
         }
     }
     
@@ -141,6 +163,7 @@ window.onload = function () {
         counter = 0;
         cycleWord();
         textUpdate();
+        gameCondition = "started";
 
     }
 
@@ -154,6 +177,7 @@ window.onload = function () {
         answer.parentNode.removeChild(answer);
         letters.parentNode.removeChild(letters);
         play();
+        
 
     }
 
