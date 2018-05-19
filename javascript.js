@@ -35,7 +35,7 @@ window.onload = function () {
     var wordHolder;                // For the proper display of the hidden word
     var wins = 0;
     var games = 0;
-    var gameCondition = "start";
+    var gameCondition = "started";
 
     // smack playerGuessesLeft
     var showGuessesLeft = document.getElementById("playerGuessesLeft");      
@@ -117,7 +117,6 @@ window.onload = function () {
             if (counter === storedLetters.length) {
                 if (guessesLeft < 1){
                     showGuessesLeft.innerHTML = "Better Luck Next Time!";
-                    console.log("This is the loss loop games" + games);
                     modalMessage.innerHTML = "YOU LOST!";
                     modal.style.display = "block";
                     if (gameCondition === "started") {
@@ -129,8 +128,6 @@ window.onload = function () {
 
                 else {
                     modalMessage.innerHTML = "YOU WIN!";
-                    console.log("This is the win count" +wins );
-                    console.log("This is the win loop games" + games);
                     showGuessesLeft.innerHTML = "Nice going!";
                     modal.style.display = "block";
                     if (gameCondition === "started") {
