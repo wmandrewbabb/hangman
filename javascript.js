@@ -102,18 +102,22 @@ window.onload = function () {
     // Show Remaining Guesses
 
     textUpdate = function () {
+        var modalMessage = document.getElementById("modalText");
         showGuessesLeft.innerHTML = "You have " + guessesLeft + " guesses left.";
         
         if (guessesLeft < 1) {
-                showGuessesLeft.innerHTML = "Game Over!";
+                showGuessesLeft.innerHTML = "You lost! Keep going to discover the word.";
         }
 
         for (var x = 0; x < storedLetters.length; x++) {
             if (counter === storedLetters.length) {
                 if (guessesLeft < 1){
                     showGuessesLeft.innerHTML = "Better Luck Next Time!";
+                    modalMessage.innerHTML = "YOU LOST!";
+                    modal.style.display = "block";
                 }
                 else {
+                    modalMessage.innerHTML = "YOU WIN!";
                     showGuessesLeft.innerHTML = "Nice going!";
                     modal.style.display = "block";
                 }
@@ -162,11 +166,19 @@ window.onload = function () {
 
     span.onclick = function() {
         modal.style.display = "none";
+        
+        answer.parentNode.removeChild(answer);
+        letters.parentNode.removeChild(letters);
+        play();
     }
 
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
+            
+            answer.parentNode.removeChild(answer);
+            letters.parentNode.removeChild(letters);
+            play();
         }
     }
 

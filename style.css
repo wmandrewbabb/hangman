@@ -142,6 +142,13 @@ p {
     text-transform: capitalize;
 }
 
+#toptitle {
+    max-width: 500px;
+    background: linear-gradient(to bottom, rgba(0,0,0, .4), rgba(0, 0, 0, 0.1));
+    z-index: 3;
+    margin: 0 auto;
+}
+
 .active {
     opacity: 0.4;
     filter: alpha(opacity=40);
@@ -331,5 +338,12 @@ button:hover {
         font-size: 30px;
         text-shadow: 1px 1px darkslategray;
         text-transform: capitalize;
+    }
+
+    #toptitle {
+        width: 100%;
+        background: linear-gradient(to bottom, rgba(0,0,0, .4), rgba(0, 0, 0, 0.1));
+        z-index: 3;
+        margin: 0 auto;
     }
 }
