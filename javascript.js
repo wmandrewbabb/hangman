@@ -33,9 +33,9 @@ window.onload = function () {
     var counter;                   // Count Stored Letters
     var answer;                    // For the proper display of the hidden word     
     var wordHolder;                // For the proper display of the hidden word
-    var wins = 0;
-    var games = 0;
-    var gameCondition = "started";
+    var wins = 0;                  // Wins
+    var games = 0;                 // Games Total
+    var gameCondition = "started"; // Current Game Condition
 
     // smack playerGuessesLeft
     var showGuessesLeft = document.getElementById("playerGuessesLeft");      
